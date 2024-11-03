@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <link rel="stylesheet" href="./contact.css">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Contact Us</h1>
+        <form id="myform" action="/submit" method="POST"  >
+            <div class="form-group">
+                <label for="first-name">First Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="last-name">Last Name</label>
+                <input type="text" id="last-name" name="last-name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">E-mail Address</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Mobile Number</label>
+                <div class="mobile-input">
+                    <span class="country-code">+91</span>
+                    <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="XXXXXXXXXX" maxlength="10" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <select id="gender" name="gender" required>
+                    <option value="">Select</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address</label>
+                <textarea id="address" name="address" rows="4" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="services">Services</label>
+                <select id="services" name="services" onchange="toggleServiceType()" required>
+                    <option value="">Select</option>
+                    <option value="home">Home</option>
+                    <option value="livingArea">Living Area</option>
+                    <option value="kitchen">Kitchen</option>
+                    <option value="bedroom">Bedroom</option>
+                    <option value="dining">Dining</option>
+                    <option value="wardrobe">Wardrobe</option>
+                    <option value="bathroom">Bathroom</option>
+                    <option value="staircase">Staircase</option>
+                    <option value="balcony">Balcony</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="serviceType">Type of Services Required</label>
+                <select id="serviceType" name="serviceType" required>
+                    <option value="">Select</option>
+                    <option value="retro living room">Retro Living Room</option>
+                    <option value="contemporary living room">Contemporary Living Room</option>
+                    <option value="minimalist living room">Minimilast Living Room</option>
+                    <option value="rustic living room">Rustic Living Room</option>
+                    <option value="eclectic living room">Eclectic Living Room</option>
+                    <option value="l-shaped kitchen">L-Shaped Kitchen</option>
+                    <option value="u-shaped kitchen">U-Shaped Kitchen</option>
+                    <option value="g-shaped kitchen">G-Shaped Kitchen</option>
+                    <option value="single wall kitchen">Single Wall Kitchen</option>
+                    <option value="kitchen island">Kitchen Island</option>
+                    <option value="antique bedroom">Antique Bedroom</option>
+                    <option value="guest bedroom">Guest Bedroom</option>
+                    <option value="industrial style bedroom">Industrial Style Bedroom</option>
+                    <option value="master bedroom">Master Bedroom</option>
+                    <option value="scandinavian bedroom">Scandinavian Bedroom</option>
+                    <option value="contemporary dining">Contemporary Dining Room</option>
+                    <option value="farmhouse dining">Farmhouse Dining Room</option>
+                    <option value="traditional dining">Traditional Dining Room</option>
+                    <option value="transitional dining">Transitional Dining Room</option>
+                    <option value="walk-in wardrobe">Walk-in Wardrobe</option>
+                    <option value="sliding wardrobe">sliding Wardrobe</option>
+                    <option value="freestanding wardrobe">freestanding Wardrobe</option>
+                    <option value="open wardrobe">open Wardrobe</option>
+                    <option value="glass wardrobe">glass Wardrobe</option>
+                    <option value="hinged wardrobe">hinged Wardrobe</option>
+                    <option value="glass shower bathroom">Glass Shower Enclosure Bathroom</option>
+                    <option value="industrial bathroom">Industrial Bathroom</option>
+                    <option value="industrial bathroom">Industrial Bathroom</option>
+                    <option value="rustic bathroom">Rustic Bathroom</option>
+                    <option value="divided bathroom">Divided Bathroom</option>
+                    <option value="eclectic bathroom">Eclectic Bathroom</option>
+                    <option value="u-shaped stairs">U shaped Staircase</option>
+                    <option value="spiral stairs">Spiral Staircase</option>
+                    <option value="straight stairs">Straight Staircase</option>
+                    <option value="winder stairs">Winder Staircase</option>
+                    <option value="bifurcated stairs">Bifurcated Staircase</option>
+                    <option value="cantilevered balcony">Cantilevered Balcony</option>
+                    <option value="juliet balcony">Juliet Balcony</option>
+                    <option value="loggia balcony">Loggia Balcony</option>
+                    <option value="hanging balcony">Hanging Balcony</option>
+                    <option value="decking balcony">Decking Balcony</option>
+                </select>
+            </div>
+
+            <div class="form-buttons">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+    <div id="thankYouModal" class="modal">
+        <div class="modal-content">
+            <h2>Thank You!</h2>
+            <p>Your submission was successful. Redirecting to homepage...</p>
+        </div>
+    </div>
+    <script>
+        document.getElementById('myform').addEventListener('submit', function (e) {
+            e.preventDefault();  // Prevent the default form submission
+    
+            const formData = {
+                name: document.querySelector("#name").value,
+                email: document.querySelector("#email").value,
+                phone: document.querySelector("#phone").value,
+                gender: document.querySelector("#gender").value,
+                address: document.querySelector("#address").value,
+                services: document.querySelector("#services").value,
+                serviceType: document.querySelector("#serviceType").value
+            };
+    
+            fetch('/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'  // Important: Setting content-type to JSON
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Show thank-you modal
+                    const modal = document.getElementById("thankYouModal");
+                    modal.style.display = "block";
+
+                    // Set a timeout to hide the modal and redirect after 5 seconds
+                    setTimeout(() => {
+                        modal.style.display = "none";
+                        window.location.href = '/';  // Redirect to the homepage
+                    }, 5000);  // 5000 milliseconds = 5 seconds
+                } else {
+                    // Handle errors here, e.g., display a message
+                    return response.json().then(errorData => {
+                        throw new Error(errorData.error || 'Error submitting form');
+                    });
+                }
+            })
+            .then(data => console.log(data))  // Log success message or do other stuff
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error submitting form: ' + error.message);  // Show alert for errors
+            });
+        });
+    </script>    
+    <script src="./index.js">
+    </script>
+</body>
+</html>

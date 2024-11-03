@@ -1,0 +1,272 @@
+*{
+    margin: 0;
+    /* font-family: Arial; */
+    border: border-box;
+}
+
+/* Header Section (Background images) */
+/* Background image with opacity using ::before pseudo-element */
+
+.bgimg {
+    height: 694px;
+    width: 100%;
+    position: relative; /* Make .bgimg a relative container for the pseudo-element */
+    display: flex;
+    align-items: center;
+    /* justify-content: center; Center the text content */
+    z-index: 1; /* Ensure content is visible above the background */
+}
+
+/* Pseudo-element for background image with opacity */
+
+.bgimg::before {
+    content: "";
+    background-image: url("/pictures/image8.png");
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0.3; /* Opacity only applies to the background image */
+    z-index: -1; /* Ensure the background image is behind all content */
+}
+
+/* Navbar styling */
+
+.navbar {
+    height: 60px;
+    background-color: rgba(0, 0, 0, 0); /* Semi-transparent background for better visibility */
+    color: white;
+    display: flex;
+    /* justify-content: space-evenly; */
+    align-items: center;
+    font-size: 1rem;
+    position: absolute; /* Position absolute to overlay on the bg image */
+    top: 0; /* Align to the top of the .bgimg */
+    width: 100%; /* Full width of the .bgimg */
+    z-index: 10;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600px;
+}
+
+/* Logo in the navbar */
+
+.nav-logo {
+    height: 50px;
+    width: 110px;
+    margin-left: 10px;
+}
+
+/* Logo image styling */
+
+.logo {
+    background-image: url("/pictures/vetenologo.png");
+    background-size: cover;
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+}
+
+/* Navbar links styling */
+
+.border{
+    text-decoration: none;
+}
+
+.border:hover {
+    text-decoration: underline;
+    color: gray;
+}
+
+/* Navbar-second */
+
+.nav-second{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.nav-home{
+    margin-left: 900px;
+}
+a{
+    color: black;
+    text-decoration: none;
+    margin-right: 30px;
+}
+.name{
+    margin-left: 530px;
+    margin-bottom: 80px;
+}
+.company-name{
+    font-size: 60px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.tagline-name{
+    padding-left: 110px;
+    font-size: 19px;
+    font-weight: 800px;
+}
+
+
+/* Section-2 Work done */
+
+.workdone{
+    height: 450px;
+    background-color: #bcb8b1;
+    border-top: 1px solid gray;
+}
+.workdone p{
+    text-align: center;
+    font-size: 40px;
+    padding-top: 40px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.work-container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 50px;
+}
+.living-area{
+    height: 250px;
+    width: 400px;
+    border-radius: 10%;
+    margin-left: 5px;
+    background-image: url("/pictures/living1.png");
+    background-size: cover;
+}
+.kitchen{
+    height: 250px;
+    width: 400px;
+    border-radius: 10%;
+    margin-left: 5px;
+    background-image: url("/pictures/kitchen1.png");
+    background-size: cover;
+}
+.bedroom{
+    height: 250px;
+    width: 400px;
+    border-radius: 10%;
+    margin-left: 5px;
+    background-image: url("/pictures/bedroom2.png");
+    background-size: cover;
+}
+
+
+/* Section-3 About Us */
+
+.about-us{
+    height: 400px;
+    background-color: #edede9;
+    border-top: 1px solid gray;
+}
+.heading{
+    text-align: center;
+    font-size: 40px;
+    padding-top: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.about-us-container{
+    display: flex!important;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+.meet{
+    height: 250px;
+    width: 450px;
+    border: 2px solid black;
+    background-image: url("/pictures/project-meet.png");
+    background-size: cover;
+    margin-left: 10px;
+}
+.about-info{
+    height: 250px;
+    width: 100%;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 17px;
+    line-height: 25px;
+    text-align: justify;
+}
+
+
+/* Section-4 Services Provided */
+
+.services{
+    height: 750px;
+    background-color: gainsboro;
+    position: relative;
+    border-top: 1px solid gray;
+}
+.services p{
+    text-align: center;
+    font-size: 40px;
+    padding-top: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.services-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 50px 70px 0px 70px;
+    text-align: center;
+}
+tags{
+    font-size: 3px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.container-box{
+    height: 280px;
+    width: 300px;
+    border: 2px solid rgb(191, 187, 187);
+    background-color: white;
+    margin-bottom: 30px;
+}
+.services-image{
+    height: 240px;
+    background-size: cover;
+    margin-bottom: 10px;
+}
+
+
+/* Section-5 Buttons */
+
+.form-buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 2px solid gainsboro;
+    background-color: gainsboro;
+    
+}
+.form-buttons button{
+    height: 30px;
+    width: 120px;
+    border-radius: 25px;
+    border: 1.8px solid black;
+    background-color:#e8e5e0;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
+/* Footer*/
+
+footer{
+    height: 80px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-top: 1px solid gray;
+    background-color: whitesmoke;
+}
+footer i{
+    font-size: 25px;
+}
